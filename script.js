@@ -8,18 +8,33 @@ function setup() {
 }
 function draw() {
   //オブジェクトの色
-  fill(0);
   //キャンバスの中心に直径100pxの丸を描画
   // ellipse(random(), random(height), 100);
   const cx = 50;
   const cy = 50;
   const d = 10;
+  fill("black");
 
-  rect(cx, cy, 1, 1);
+  for (let x = -50; x < 50; x++) {
+    rect(cx + x, cy, 1, 1);
+  }
 
-  for (let i = 0; i < d; i++) {
-    for (let j = 0; j < d; j++) {
-      rect(Math.abs(i + d), j, 1, 1);
+  fill("black");
+  for (let y = -50; y < 50; y++) {
+    rect(cx, cy + y, 1, 1);
+  }
+
+  // 一次関数
+  // fill("blue");
+  // for (let a = 0; a < 100; a++) {
+  //   rect(a, 100 - a, 1, 1);
+  // }
+
+  // 二次関数
+  fill("red");
+  for (let b = 0; b < 100; b++) {
+    for (let c = 0; c < 30; c++) {
+      rect(50 + b, 50 - b + c ** 2, 1, 1);
     }
   }
 }
