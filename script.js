@@ -5,9 +5,9 @@ function setup() {
   createCanvas(wWidth, wHeight);
   //背景色
   background(255);
-
   noStroke();
 }
+
 function draw() {
   const wHeight = 500;
   const wWidth = 500;
@@ -27,44 +27,61 @@ function draw() {
   const cy = wHeight / 2;
   const d = 200;
 
-  // x-axis
-  fill("black");
-  for (let x = -cx; x < cy; x++) {
-    rect(cx + x, cy, 1, 1);
-  }
+  const drawXaxis = (cx, cy) => {
+    for (let i = -cx; i < cy; i++) {
+      rect(cx + i, cy, 1, 1);
+    }
+  };
 
-  //y-axis
-  fill("black");
-  for (let y = -cx; y < cy; y++) {
-    rect(cx, cy + y, 1, 1);
-  }
+  const drawYaxis = (cx, cy) => {
+    for (let i = -cx; i < cy; i++) {
+      rect(cx, cy + i, 1, 1);
+    }
+  };
+
+  const drawLinerFunc = (a) => {
+    for (let i = -cx; i < cx; i = i + 0.1) {
+      rect(cx + i, cy - i * a, 1, 1);
+    }
+  };
+
+  const drawQuadraticFunc = (a) => {
+    for (let i = 0; i < 400; i++) {
+      rect(cx + i, cy - (i * a) ** 2, 1, 1);
+      rect(cx - i, cy - (i * a) ** 2, 1, 1);
+    }
+  };
+
+  fill("pink");
+  drawXaxis(cx, cy);
+  fill("red");
+  drawYaxis(cx, cy);
 
   // 一次関数;
   fill("blue");
-  for (let a = 0; a < wHeight; a++) {
-    rect(a, wHeight - a, 1, 1);
-  }
+  drawLinerFunc(1);
+  fill("orange");
+  drawLinerFunc(4);
+  fill("purple");
+  drawLinerFunc(-2);
 
   // 二次関数
   fill("red");
-  for (let b = 0; b < 400; b++) {
-    rect(cx + b, cy - (b / 8) ** 2, 1, 1);
-    rect(cx - b, cy - (b / 8) ** 2, 1, 1);
-  }
+  // drawQuadraticFunc(1 / 8);
 
   // マウス座標に円
   // clear();
   // circle(mouseX, mouseY, 100);
 
   // 円の関数
-  fill("green");
-  for (let c = 0; c < d; c = c + 0.1) {
-    const divide = 10;
-    rect(
-      cx + Math.cos(c / divide) * 100,
-      cy - Math.sin(c / divide) * 100,
-      1,
-      1
-    );
-  }
+  // fill("green");
+  // for (let c = 0; c < d; c = c + 0.1) {
+  //   const divide = 10;
+  //   rect(
+  //     cx + Math.cos(c / divide) * 100,
+  //     cy - Math.sin(c / divide) * 100,
+  //     1,
+  //     1
+  //   );
+  // }
 }
