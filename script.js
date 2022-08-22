@@ -9,38 +9,48 @@ function setup() {
   noStroke();
 }
 function draw() {
-  const wHeight = windowHeight;
-  const wWidth = windowWidth;
+  const wHeight = 500;
+  const wWidth = 500;
   //オブジェクトの色
   //キャンバスの中心に直径100pxの丸を描画
   // ellipse(random(), random(height), 100);
+
+  // 正方形を描画
+  // fill("black");
+  // for (let j = 0; j < 100; j++) {
+  //   for (let i = 0; i < 100; i++) {
+  //     rect(i, j, 1, 1);
+  //   }
+  // }
+
   const cx = wWidth / 2;
   const cy = wHeight / 2;
   const d = 200;
 
+  // x-axis
   fill("black");
-
   for (let x = -cx; x < cy; x++) {
     rect(cx + x, cy, 1, 1);
   }
 
+  //y-axis
   fill("black");
   for (let y = -cx; y < cy; y++) {
     rect(cx, cy + y, 1, 1);
   }
 
-  // 一次関数
-  // fill("blue");
-  // for (let a = 0; a < d; a++) {
-  //   rect(a, d - a, 1, 1);
-  // }
+  // 一次関数;
+  fill("blue");
+  for (let a = 0; a < wHeight; a++) {
+    rect(a, wHeight - a, 1, 1);
+  }
 
   // 二次関数
   fill("red");
-  // for (let b = 0; b < 400; b++) {
-  //   rect(cx + b, cy - (b / 8) ** 2, 1, 1);
-  //   rect(cx - b, cy - (b / 8) ** 2, 1, 1);
-  // }
+  for (let b = 0; b < 400; b++) {
+    rect(cx + b, cy - (b / 8) ** 2, 1, 1);
+    rect(cx - b, cy - (b / 8) ** 2, 1, 1);
+  }
 
   // マウス座標に円
   // clear();
