@@ -46,9 +46,14 @@ function draw() {
   };
 
   const drawQuadraticFunc = (a) => {
-    for (let i = 0; i < 400; i++) {
-      rect(cx + i, cy - (i * a) ** 2, 1, 1);
-      rect(cx - i, cy - (i * a) ** 2, 1, 1);
+    if (a > 0) {
+      for (let i = -400; i < 400; i++) {
+        rect(cx + i, cy - (i * a) ** 2, 1, 1);
+      }
+    } else if (a < 0) {
+      for (let i = -400; i < 400; i++) {
+        rect(cx + i, cy + (i * a) ** 2, 1, 1);
+      }
     }
   };
 
@@ -59,15 +64,17 @@ function draw() {
 
   // 一次関数;
   fill("blue");
-  drawLinerFunc(1);
+  // drawLinerFunc(1);
   fill("orange");
-  drawLinerFunc(4);
+  // drawLinerFunc(4);
   fill("purple");
-  drawLinerFunc(-2);
+  // drawLinerFunc(-2);
 
   // 二次関数
   fill("red");
-  // drawQuadraticFunc(1 / 8);
+  drawQuadraticFunc(1 / 8);
+  fill("blue");
+  drawQuadraticFunc(-1 / 8);
 
   // マウス座標に円
   // clear();
